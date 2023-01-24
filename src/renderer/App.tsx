@@ -1,39 +1,18 @@
+import React from 'react';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
 import './App.css';
+import Slider from './components/Slider/Slider';
 
-const Hello = () => {
+const Index = () => {
   return (
-    <div>
-      <div className="Hello">
-        <img width="200" alt="icon" src={icon} />
-      </div>
+    <div className="container">
+      <Slider />
       <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="folded hands">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
+      <div className="Hello">Prova prova prova</div>
+      <div className="flex justify-center">
+        <button type="button">Giulia</button>
+        <button type="button">Amici</button>
+        <button type="button">Famiglia</button>
       </div>
     </div>
   );
@@ -43,7 +22,7 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Hello />} />
+        <Route path="/" element={<Index />} />
       </Routes>
     </Router>
   );

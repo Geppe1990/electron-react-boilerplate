@@ -14,9 +14,17 @@ body {
   );
   font-family: sans-serif;
   overflow-y: hidden;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 button {
@@ -31,6 +39,7 @@ button {
   transition: all ease-in 0.1s;
   cursor: pointer;
   opacity: 0.9;
+  margin-right: 10px;
 }
 
 button:hover {
@@ -59,4 +68,37 @@ a:hover {
   justify-content: center;
   align-items: center;
   margin: 20px 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+/*
+* SLIDER
+*/
+.swiper .swiper-slide {
+  text-align: center;
+}
+
+.swiper button {
+  margin: 0;
+}
+
+.swiper .commands {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: calc(50% - 22px);
+  left: 0;
+  right: 0;
+  z-index: 2;
 }
