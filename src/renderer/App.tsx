@@ -1,44 +1,41 @@
-import React, { SetStateAction, useState } from 'react';
+import React, { useState } from 'react';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Slider from './components/Slider/Slider';
+import SliderWrapper from './components/SliderWrapper/SliderWrapper';
 
 const Index = () => {
-  const [images, setImages] = useState<string[]>([]);
-  // console.log(images);
-  const loadImages = () => {
-    window.electron.ipcRenderer.once('get-files', (arg) => {
-      const result = arg as SetStateAction<string[]>;
-      setImages(result);
-      // eslint-disable-next-line no-console
-    });
-    window.electron.ipcRenderer.sendMessage('get-files', [
-      'BACKEND: dato ricevuto dal front-end',
-    ]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [activePhoto, setActivePhoto] = useState('foto1');
+
+  const movePhoto = (foto: string, folder: string) => {
+    // eslint-disable-next-line no-console
+    console.log(`Muovo la foto ${foto} nella cartella ${folder}`);
   };
 
   return (
     <div className="container">
-      {/* <Slider /> */}
+      <SliderWrapper />
       <h1>electron-react-boilerplate</h1>
       <div className="Hello">Prova prova prova</div>
       <div className="flex justify-center">
-        <button type="button">👰‍♀️ Giulia</button>
-        <button type="button">👯 Amici</button>
-        <button type="button">👨‍👩‍👦‍👦 Famiglia</button>
-        <button type="button" onClick={() => loadImages()}>
-          🗂️ Seleziona cartella
+        <button
+          type="button"
+          onClick={() => movePhoto(activePhoto, 'nomecartella1')}
+        >
+          👰‍♀️ Giulia
         </button>
-        <>
-          {images.map((image) => (
-            <img
-              key={image}
-              src={`${image}`}
-              alt={image}
-              style={{ width: '100px', height: 'auto' }}
-            />
-          ))}
-        </>
+        <button
+          type="button"
+          onClick={() => movePhoto(activePhoto, 'nomecartella2')}
+        >
+          👯 Amici
+        </button>
+        <button
+          type="button"
+          onClick={() => movePhoto(activePhoto, 'nomecartella3')}
+        >
+          👨‍👩‍👦‍👦 Famiglia
+        </button>
       </div>
     </div>
   );

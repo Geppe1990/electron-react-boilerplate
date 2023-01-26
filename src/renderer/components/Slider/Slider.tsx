@@ -1,61 +1,63 @@
 import React, { useState } from 'react';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronRight,
-  faChevronLeft,
-} from '@fortawesome/free-solid-svg-icons';
-import icon from '../../../../assets/icon.svg';
+import SlideNextButton from './SlideNextButton';
+import SlidePrevButton from './SlidePrevButton';
 
-const SlideNextButton = () => {
-  const swiper = useSwiper();
-
-  return (
-    <button type="button" onClick={() => swiper.slideNext()}>
-      <FontAwesomeIcon icon={faChevronRight} />
-    </button>
-  );
+type SlideContentProps = {
+  children: JSX.Element;
 };
 
-const SlidePrevButton = () => {
-  const swiper = useSwiper();
-
-  return (
-    <button type="button" onClick={() => swiper.slidePrev()}>
-      <FontAwesomeIcon icon={faChevronLeft} />
-    </button>
-  );
+type SliderProps = {
+  images: string[];
 };
 
-const Slider = () => {
-  const [activePhoto, setActivePhoto] = useState(0);
+const SlideContent: React.FC<SlideContentProps> = ({ children }) => {
+  return <>{children}</>;
+};
+
+const Slider: React.FC<SliderProps> = ({ images }) => {
+  const [activePhoto, setActivePhoto] = useState<string>();
+  // eslint-disable-next-line no-console
   console.log(activePhoto);
   return (
-    <Swiper
-      spaceBetween={50}
-      slidesPerView={1}
-      onSwiper={(swiper) => {
-        const index = swiper.activeIndex;
+    <>
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={1}
+        onUpdate={(swiper) => {
+          const index = swiper.realIndex;
+          const activeSlide = swiper.slides[index];
+          const imagePath = activeSlide?.querySelector('img')?.src;
 
-        setActivePhoto(index);
-      }}
-      onSlideChange={(swiper) => {
-        const index = swiper.activeIndex;
+          setActivePhoto(imagePath);
+        }}
+        onSlideChange={(swiper) => {
+          const index = swiper.realIndex;
+          const activeSlide = swiper.slides[index];
+          const imagePath = activeSlide?.querySelector('img')?.src;
 
-        setActivePhoto(index);
-      }}
-    >
-      {[0, 1, 2, 3, 4].map((index) => (
-        <SwiperSlide tabIndex={index} key={index}>
-          <img width="200" alt="icon" src={icon} />
-        </SwiperSlide>
-      ))}
-      <div className="commands">
-        <SlidePrevButton />
-        <SlideNextButton />
-      </div>
-    </Swiper>
+          setActivePhoto(imagePath);
+        }}
+      >
+        {images.map((image, index) => (
+          <SwiperSlide tabIndex={index} key={image}>
+            <SlideContent>
+              <img
+                key={image}
+                src={`${image}`}
+                alt={image}
+                style={{ width: '300px', height: 'auto' }}
+              />
+            </SlideContent>
+          </SwiperSlide>
+        ))}
+        <div className="commands">
+          <SlidePrevButton />
+          <SlideNextButton />
+        </div>
+      </Swiper>
+    </>
   );
 };
 
