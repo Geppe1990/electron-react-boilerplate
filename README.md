@@ -1,4 +1,4 @@
-https://codefrontend.com/file-upload-reactjs/
+Fare una funzione lato nodejs che interroga il contenuto di una cartella e lo passa alla vista
 
 <img src=".erb/img/erb-banner.svg" width="100%" />
 

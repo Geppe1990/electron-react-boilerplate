@@ -15,6 +15,8 @@ import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 
+const fs = require('fs');
+
 class AppUpdater {
   constructor() {
     log.transports.file.level = 'info';
@@ -28,7 +30,23 @@ let mainWindow: BrowserWindow | null = null;
 ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
   console.log(msgTemplate(arg));
-  event.reply('ipc-example', msgTemplate('pong'));
+  event.reply('ipc-example', msgTemplate('Invio data da backend'));
+});
+
+ipcMain.on('get-files', (event, arg) => {
+  const folder = '/Users/geppe/Desktop/Foto/Io';
+  const result: string[] = [];
+  const files = fs.readdirSync(folder);
+
+  // TODO: Cercare di recuperare il path completo dei file
+  files.forEach((file: string) => {
+    const isFolder = !file.startsWith('.');
+    if (isFolder) result.push(`file://${folder}/${file}`);
+  });
+
+  // console.log(result);
+  console.log(arg);
+  event.reply('get-files', result);
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -75,6 +93,7 @@ const createWindow = async () => {
     height: 728,
     icon: getAssetPath('icon.png'),
     webPreferences: {
+      webSecurity: false,
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
