@@ -1,3 +1,4 @@
+TODO: FIX REDUCERS
 https://medium.com/@sqnguyen829/setting-up-multiple-reducers-for-react-redux-3d6566d4348f
 https://www.freecodecamp.org/news/how-to-use-redux-in-your-react-typescript-app/
 
