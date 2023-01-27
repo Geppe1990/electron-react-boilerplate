@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import SlideNextButton from './SlideNextButton';
 import SlidePrevButton from './SlidePrevButton';
+import Test from '../Test/test';
 
 type SlideContentProps = {
   children: JSX.Element;
@@ -22,6 +23,7 @@ const Slider: React.FC<SliderProps> = ({ images }) => {
   console.log(activePhoto);
   return (
     <>
+      <Test />
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
