@@ -1,5 +1,6 @@
 import { ActionType } from '../actionTypes';
 import { BankAction } from '../actions';
+
 const initialState = 0;
 
 const reducer = (state: number = initialState, action: BankAction) => {

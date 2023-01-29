@@ -19,10 +19,16 @@ const Test = () => {
         ))}
       </div>
 
-      <button onClick={() => depositMoney(1000)}>Deposit</button>
-      <button onClick={() => withdrawMoney(500)}>Withdraw</button>
-      <button onClick={() => bankrupt()}>Bankrupt</button>
-      <button onClick={() => loadPhotos(['Foto 3', 'Foto 4'])}>
+      <button type="button" onClick={() => depositMoney(1000)}>
+        Deposit
+      </button>
+      <button type="button" onClick={() => withdrawMoney(500)}>
+        Withdraw
+      </button>
+      <button type="button" onClick={() => bankrupt()}>
+        Bankrupt
+      </button>
+      <button type="button" onClick={() => loadPhotos(['Foto 3', 'Foto 4'])}>
         Load Photos
       </button>
     </div>

@@ -1,5 +1,6 @@
 import { ActionType } from '../actionTypes';
 import { PhotosAction } from '../actions';
+
 const initialState: string[] = [];
 
 const reducer = (state: string[] = initialState, action: PhotosAction) => {

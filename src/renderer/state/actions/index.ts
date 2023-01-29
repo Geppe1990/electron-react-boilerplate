@@ -1,4 +1,5 @@
 import { ActionType } from '../actionTypes';
+
 interface IDepositAction {
   type: ActionType.DEPOSIT;
   payload: number;
@@ -18,5 +19,11 @@ interface ILoadPhotosAction {
   payload: string[];
 }
 
+interface IActivePhotoAction {
+  type: ActionType.ACTIVEPHOTO;
+  payload: string | undefined;
+}
+
 export type BankAction = IDepositAction | IWithDrawAction | IBankruptAction;
 export type PhotosAction = ILoadPhotosAction;
+export type ActivePhotoAction = IActivePhotoAction;

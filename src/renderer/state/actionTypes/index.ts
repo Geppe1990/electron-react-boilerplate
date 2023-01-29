@@ -3,4 +3,5 @@ export enum ActionType {
   WITHDRAW = 'withdraw',
   BANKRUPT = 'bankrupt',
   LOADPHOTOS = 'loadphotos',
+  ACTIVEPHOTO = 'activephoto',
 }

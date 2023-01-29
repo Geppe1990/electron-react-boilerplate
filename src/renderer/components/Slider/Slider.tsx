@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators, State } from 'renderer/state';
 import SlideNextButton from './SlideNextButton';
 import SlidePrevButton from './SlidePrevButton';
 
@@ -17,11 +20,16 @@ const SlideContent: React.FC<SlideContentProps> = ({ children }) => {
 };
 
 const Slider: React.FC<SliderProps> = ({ images }) => {
-  const [activePhoto, setActivePhoto] = useState<string>();
+  // const [activePhoto, setActivePhoto] = useState<string>();
+  const dispatch = useDispatch();
+  const { setActivePhoto } = bindActionCreators(actionCreators, dispatch);
+  const activePhoto = useSelector((state: State) => state.activePhoto);
+
   // eslint-disable-next-line no-console
   console.log(activePhoto);
   return (
     <>
+      <>La foto attiva è {activePhoto}</>
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
