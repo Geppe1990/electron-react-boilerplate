@@ -15,8 +15,8 @@ const Index = () => {
 
   return (
     <div className="container">
-      {/* <SliderWrapper /> */}
-      <Test />
+      <SliderWrapper />
+      {/* <Test /> */}
       <h1>electron-react-boilerplate</h1>
       <div className="Hello">Prova prova prova</div>
       <div className="flex justify-center">

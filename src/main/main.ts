@@ -44,8 +44,6 @@ ipcMain.on('get-files', (event, arg) => {
     if (isFolder) result.push(`file://${folder}/${file}`);
   });
 
-  // console.log(result);
-  console.log(arg);
   event.reply('get-files', result);
 });
 

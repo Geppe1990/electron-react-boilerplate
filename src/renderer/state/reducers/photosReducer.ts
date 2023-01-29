@@ -1,6 +1,6 @@
 import { ActionType } from '../actionTypes';
 import { PhotosAction } from '../actions';
-const initialState = ["Foto 1", "Foto 2"];
+const initialState: string[] = [];
 
 const reducer = (state: string[] = initialState, action: PhotosAction) => {
   switch (action.type) {
