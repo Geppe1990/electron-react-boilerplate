@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators, State } from 'renderer/state';
+import { Dom7Array } from 'dom7';
 import SlideNextButton from './SlideNextButton';
 import SlidePrevButton from './SlidePrevButton';
 import 'swiper/css';
@@ -27,6 +28,15 @@ const Slider: React.FC<SliderProps> = ({ images }) => {
   );
   const activePhoto = useSelector((state: State) => state.activePhoto);
 
+  const manageSlide = (swiper: { realIndex: number; slides: Dom7Array }) => {
+    const index = swiper.realIndex;
+    const activeSlide = swiper.slides[index];
+    const imagePath = activeSlide?.querySelector('img')?.src;
+
+    if (!imagePath) return;
+    setActivePhoto(imagePath);
+  };
+
   window.electron.ipcRenderer.once('move-photo', (arg) => {
     removePhoto(arg as string);
     setActivePhoto('');
@@ -38,22 +48,8 @@ const Slider: React.FC<SliderProps> = ({ images }) => {
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        onUpdate={(swiper) => {
-          const index = swiper.realIndex;
-          const activeSlide = swiper.slides[index];
-          const imagePath = activeSlide?.querySelector('img')?.src;
-
-          if (!imagePath) return;
-          setActivePhoto(imagePath);
-        }}
-        onSlideChange={(swiper) => {
-          const index = swiper.realIndex;
-          const activeSlide = swiper.slides[index];
-          const imagePath = activeSlide?.querySelector('img')?.src;
-
-          if (!imagePath) return;
-          setActivePhoto(imagePath);
-        }}
+        onUpdate={(swiper) => manageSlide(swiper)}
+        onSlideChange={(swiper) => manageSlide(swiper)}
       >
         {images.map((image, index) => (
           <SwiperSlide tabIndex={index} key={image}>
