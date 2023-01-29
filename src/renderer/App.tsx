@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import SliderWrapper from './components/SliderWrapper/SliderWrapper';
-import { Counter } from './features/counter/Counter';
+import Test from './components/Test/Test';
 
 const Index = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <div className="container">
       {/* <SliderWrapper /> */}
-      <Counter />
+      <Test />
       <h1>electron-react-boilerplate</h1>
       <div className="Hello">Prova prova prova</div>
       <div className="flex justify-center">
