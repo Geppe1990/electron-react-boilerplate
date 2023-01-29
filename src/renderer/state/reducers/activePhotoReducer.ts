@@ -1,7 +1,7 @@
 import { ActionType } from '../actionTypes';
 import { ActivePhotoAction } from '../actions';
 
-const initialState = 'Pippofranco';
+const initialState = '';
 
 const reducer = (
   state: string | undefined = initialState,
