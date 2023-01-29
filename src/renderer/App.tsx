@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from 'renderer/state';
-import { useDispatch } from 'react-redux';
+import { actionCreators, State } from 'renderer/state';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import SliderWrapper from './components/SliderWrapper/SliderWrapper';
 
 const Index = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [activePhoto, setActivePhoto] = useState('foto1');
+  const activePhoto = useSelector((state: State) => state.activePhoto);
   const dispatch = useDispatch();
   const { loadPhotos } = bindActionCreators(actionCreators, dispatch);
 
@@ -21,36 +20,51 @@ const Index = () => {
     ]);
   };
 
-  const movePhoto = (foto: string, folder: string) => {
-    // eslint-disable-next-line no-console
-    console.log(`Muovo la foto ${foto} nella cartella ${folder}`);
+  const movePhoto = (foto: string | undefined, folder: string) => {
+    window.electron.ipcRenderer.sendMessage('move-photo', [foto, folder]);
   };
 
   return (
     <div className="container">
       <SliderWrapper />
-      {/* <Test /> */}
       <h1>electron-react-boilerplate</h1>
-      <div className="Hello">Prova prova prova</div>
       <div className="flex justify-center">
         <button onClick={() => loadImages()} type="button">
           Carica le foto
         </button>
         <button
+          disabled={!activePhoto}
           type="button"
-          onClick={() => movePhoto(activePhoto, 'nomecartella1')}
+          onClick={() =>
+            movePhoto(
+              activePhoto,
+              'file:///Users/geppe/Desktop/provafoto/fotonuove'
+            )
+          }
         >
           👰‍♀️ Giulia
         </button>
         <button
+          disabled={!activePhoto}
           type="button"
-          onClick={() => movePhoto(activePhoto, 'nomecartella2')}
+          onClick={() =>
+            movePhoto(
+              activePhoto,
+              'file:///Users/geppe/Desktop/provafoto/fotonuove'
+            )
+          }
         >
           👯 Amici
         </button>
         <button
+          disabled={!activePhoto}
           type="button"
-          onClick={() => movePhoto(activePhoto, 'nomecartella3')}
+          onClick={() =>
+            movePhoto(
+              activePhoto,
+              'file:///Users/geppe/Desktop/provafoto/fotonuove'
+            )
+          }
         >
           👨‍👩‍👦‍👦 Famiglia
         </button>

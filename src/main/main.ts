@@ -47,6 +47,22 @@ ipcMain.on('get-files', (event, arg) => {
   event.reply('get-files', result);
 });
 
+ipcMain.on('move-photo', (event, arg) => {
+  if (!arg) {
+    return;
+  }
+
+  const filePath = arg[0].replace('file://', '');
+  const fileName = path.basename(filePath);
+  const newFolder = arg[1];
+  const newPath = `${newFolder}/${fileName}`.replace('file://', '');
+  fs.rename(filePath, newPath, (err: Error) => {
+    if (err) throw err;
+  });
+
+  mainWindow?.webContents.send('move-photo', arg[0]);
+});
+
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
   sourceMapSupport.install();

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators, State } from 'renderer/state';
 import SlideNextButton from './SlideNextButton';
 import SlidePrevButton from './SlidePrevButton';
+import 'swiper/css';
 
 type SlideContentProps = {
   children: JSX.Element;
@@ -20,13 +20,18 @@ const SlideContent: React.FC<SlideContentProps> = ({ children }) => {
 };
 
 const Slider: React.FC<SliderProps> = ({ images }) => {
-  // const [activePhoto, setActivePhoto] = useState<string>();
   const dispatch = useDispatch();
-  const { setActivePhoto } = bindActionCreators(actionCreators, dispatch);
+  const { setActivePhoto, removePhoto } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
   const activePhoto = useSelector((state: State) => state.activePhoto);
 
-  // eslint-disable-next-line no-console
-  console.log(activePhoto);
+  window.electron.ipcRenderer.once('move-photo', (arg) => {
+    removePhoto(arg as string);
+    setActivePhoto('');
+  });
+
   return (
     <>
       <>La foto attiva è {activePhoto}</>
@@ -38,6 +43,7 @@ const Slider: React.FC<SliderProps> = ({ images }) => {
           const activeSlide = swiper.slides[index];
           const imagePath = activeSlide?.querySelector('img')?.src;
 
+          if (!imagePath) return;
           setActivePhoto(imagePath);
         }}
         onSlideChange={(swiper) => {
@@ -45,6 +51,7 @@ const Slider: React.FC<SliderProps> = ({ images }) => {
           const activeSlide = swiper.slides[index];
           const imagePath = activeSlide?.querySelector('img')?.src;
 
+          if (!imagePath) return;
           setActivePhoto(imagePath);
         }}
       >

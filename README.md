@@ -1,6 +1,7 @@
-TODO: FIX REDUCERS
-https://medium.com/@sqnguyen829/setting-up-multiple-reducers-for-react-redux-3d6566d4348f
-https://www.freecodecamp.org/news/how-to-use-redux-in-your-react-typescript-app/
+TODO: GESTIRE L'ERRORE CHE ACCADE QUANDO NON è PRESENTE NESSUNA FOTO
+PROVA A VEDERE QUESTO LINK
+https://stackoverflow.com/questions/60574898/nodejs-events-triggering-multiple-times-in-electron-react-app
+
 
 <img src=".erb/img/erb-banner.svg" width="100%" />
 

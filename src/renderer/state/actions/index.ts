@@ -19,11 +19,16 @@ interface ILoadPhotosAction {
   payload: string[];
 }
 
+interface IRemovePhotoAction {
+  type: ActionType.REMOVEPHOTO;
+  payload: string;
+}
+
 interface IActivePhotoAction {
   type: ActionType.ACTIVEPHOTO;
   payload: string | undefined;
 }
 
 export type BankAction = IDepositAction | IWithDrawAction | IBankruptAction;
-export type PhotosAction = ILoadPhotosAction;
+export type PhotosAction = ILoadPhotosAction | IRemovePhotoAction;
 export type ActivePhotoAction = IActivePhotoAction;

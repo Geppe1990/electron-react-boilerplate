@@ -37,6 +37,15 @@ export const loadPhotos = (photos: string[]) => {
   };
 };
 
+export const removePhoto = (photo: string) => {
+  return (dispatch: Dispatch<PhotosAction>) => {
+    dispatch({
+      type: ActionType.REMOVEPHOTO,
+      payload: photo,
+    });
+  };
+};
+
 export const setActivePhoto = (activePhoto: string | undefined) => {
   return (dispatch: Dispatch<ActivePhotoAction>) => {
     dispatch({
