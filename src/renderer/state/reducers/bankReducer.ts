@@ -1,8 +1,8 @@
-import { ActionType } from '../actionYypes';
-import { Action } from '../actions';
+import { ActionType } from '../actionTypes';
+import { BankAction } from '../actions';
 const initialState = 0;
 
-const reducer = (state: number = initialState, action: Action) => {
+const reducer = (state: number = initialState, action: BankAction) => {
   switch (action.type) {
     case ActionType.DEPOSIT:
       return state + action.payload;

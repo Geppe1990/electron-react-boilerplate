@@ -5,19 +5,26 @@ import { actionCreators, State } from 'renderer/state';
 
 const Test = () => {
   const dispatch = useDispatch();
-  const { depositMoney, withdrawMoney, bankrupt } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const { depositMoney, withdrawMoney, bankrupt, loadPhotos } =
+    bindActionCreators(actionCreators, dispatch);
   const amount = useSelector((state: State) => state.bank);
+  const photos = useSelector((state: State) => state.photos);
 
   return (
     <div className="App">
       <h1>{amount}</h1>
+      <div>
+        {photos.map((photo) => (
+          <div key={photo}>{photo}</div>
+        ))}
+      </div>
 
       <button onClick={() => depositMoney(1000)}>Deposit</button>
       <button onClick={() => withdrawMoney(500)}>Withdraw</button>
       <button onClick={() => bankrupt()}>Bankrupt</button>
+      <button onClick={() => loadPhotos(['Foto 3', 'Foto 4'])}>
+        Load Photos
+      </button>
     </div>
   );
 };

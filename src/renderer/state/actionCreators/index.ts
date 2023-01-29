@@ -1,9 +1,12 @@
-import { ActionType } from '../actionYypes';
+import { ActionType } from '../actionTypes';
 import { Dispatch } from 'redux';
-import { Action } from '../actions';
+import {
+  BankAction,
+  PhotosAction
+} from '../actions';
 
 export const depositMoney = (amount: number) => {
-  return (dispatch: Dispatch<Action>) => {
+  return (dispatch: Dispatch<BankAction>) => {
     dispatch({
       type: ActionType.DEPOSIT,
       payload: amount,
@@ -12,7 +15,7 @@ export const depositMoney = (amount: number) => {
 };
 
 export const withdrawMoney = (amount: number) => {
-  return (dispatch: Dispatch<Action>) => {
+  return (dispatch: Dispatch<BankAction>) => {
     dispatch({
       type: ActionType.WITHDRAW,
       payload: amount,
@@ -21,9 +24,18 @@ export const withdrawMoney = (amount: number) => {
 };
 
 export const bankrupt = () => {
-  return (dispatch: Dispatch<Action>) => {
+  return (dispatch: Dispatch<BankAction>) => {
     dispatch({
       type: ActionType.BANKRUPT,
     });
   };
 };
+
+export const loadPhotos = (photos: string[]) => {
+  return (dispatch: Dispatch<PhotosAction>) => {
+    dispatch({
+      type: ActionType.LOADPHOTOS,
+      payload: photos,
+    });
+  };
+}

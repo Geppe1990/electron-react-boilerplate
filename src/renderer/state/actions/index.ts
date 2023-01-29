@@ -1,17 +1,22 @@
-import { ActionType } from '../actionYypes';
-
-interface DepositAction {
+import { ActionType } from '../actionTypes';
+interface IDepositAction {
   type: ActionType.DEPOSIT;
   payload: number;
 }
 
-interface WithDrawAction {
+interface IWithDrawAction {
   type: ActionType.WITHDRAW;
   payload: number;
 }
 
-interface BankruptAction {
+interface IBankruptAction {
   type: ActionType.BANKRUPT;
 }
 
-export type Action = DepositAction | WithDrawAction | BankruptAction;
+interface ILoadPhotosAction {
+  type: ActionType.LOADPHOTOS;
+  payload: string[];
+}
+
+export type BankAction = IDepositAction | IWithDrawAction | IBankruptAction;
+export type PhotosAction = ILoadPhotosAction;
