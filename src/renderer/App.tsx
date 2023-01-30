@@ -3,6 +3,7 @@ import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { actionCreators, State } from 'renderer/state';
 import { useDispatch, useSelector } from 'react-redux';
+import 'bulma/css/bulma.min.css';
 import './App.css';
 import SliderWrapper from './components/SliderWrapper/SliderWrapper';
 
@@ -13,6 +14,7 @@ type FolderButtonProps = {
 
 const Index = () => {
   const activePhoto = useSelector((state: State) => state.activePhoto);
+  const photos = useSelector((state: State) => state.photos);
   const dispatch = useDispatch();
   const { loadPhotos } = bindActionCreators(actionCreators, dispatch);
 
@@ -30,13 +32,16 @@ const Index = () => {
   };
 
   const FolderButton: React.FC<FolderButtonProps> = ({ name, folder }) => (
-    <button
-      disabled={!activePhoto}
-      type="button"
-      onClick={() => movePhoto(activePhoto, folder)}
-    >
-      {name}
-    </button>
+    <div className="mb-2">
+      <button
+        className="is-block"
+        disabled={!activePhoto}
+        type="button"
+        onClick={() => movePhoto(activePhoto, folder)}
+      >
+        {name}
+      </button>
+    </div>
   );
 
   const basePath = 'file:///Users/geppe/Desktop';
@@ -50,26 +55,31 @@ const Index = () => {
     { name: '🐾 Animali', folder: `${basePath}/nuovefoto/animali` },
     { name: '🏖️ Vacanze', folder: `${basePath}/nuovefoto/vacanze` },
     { name: '🗂️ ToFolder', folder: `${basePath}/nuovefoto/fotodaspostare` },
+    { name: '⭐️ Altro', folder: `${basePath}/nuovefoto/fotodaspostare` },
   ];
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <h1>Photomanager</h1>
-      <SliderWrapper />
-      <div className="flex justify-center">
-        <button onClick={() => loadImages()} type="button">
-          Carica le foto
-        </button>
-        {buttons.map(({ name, folder }) => (
-          <FolderButton key={name} name={name} folder={folder} />
-        ))}
+      <div className="columns">
+        <div className="column is-four-fifths">
+          <SliderWrapper />
+          <div className="flex justify-center">
+            <button
+              disabled={photos && photos.length > 0}
+              onClick={() => loadImages()}
+              type="button"
+            >
+              Carica le foto
+            </button>
+          </div>
+        </div>
+        <aside className="column">
+          {buttons.map(({ name, folder }) => (
+            <FolderButton key={name} name={name} folder={folder} />
+          ))}
+        </aside>
       </div>
-      <aside className="sidebar">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quas
-        atque dignissimos animi expedita alias quidem vel sapiente accusantium
-        beatae est eum, ipsum eius numquam officiis fuga, tempore quae
-        architecto.
-      </aside>
     </div>
   );
 };

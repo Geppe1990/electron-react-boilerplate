@@ -44,7 +44,6 @@ const Slider: React.FC<SliderProps> = ({ images }) => {
 
   return (
     <>
-      <>La foto attiva è {activePhoto}</>
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -54,12 +53,16 @@ const Slider: React.FC<SliderProps> = ({ images }) => {
         {images.map((image, index) => (
           <SwiperSlide tabIndex={index} key={image}>
             <SlideContent>
-              <img
-                key={image}
-                src={`${image}`}
-                alt={image}
-                style={{ width: '300px', height: 'auto' }}
-              />
+              <>
+                <img
+                  key={image}
+                  src={`${image}`}
+                  alt={image}
+                  style={{ width: '300px', height: 'auto' }}
+                />
+                <br />
+                <b>{activePhoto}</b>
+              </>
             </SlideContent>
           </SwiperSlide>
         ))}
