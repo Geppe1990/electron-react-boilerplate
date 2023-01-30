@@ -33,12 +33,11 @@ ipcMain.on('ipc-example', async (event, arg) => {
   event.reply('ipc-example', msgTemplate('Invio data da backend'));
 });
 
-ipcMain.on('get-files', (event, arg) => {
+ipcMain.on('get-files', (event) => {
   const folder = '/Users/geppe/Desktop/provafoto/fotovecchie';
   const result: string[] = [];
   const files = fs.readdirSync(folder);
 
-  // TODO: Cercare di recuperare il path completo dei file
   files.forEach((file: string) => {
     const isFolder = !file.startsWith('.');
     if (isFolder) result.push(`file://${folder}/${file}`);

@@ -1,4 +1,4 @@
-TODO: GESTIRE L'ERRORE CHE ACCADE QUANDO NON è PRESENTE NESSUNA FOTO
+TODO: Gestire eventi multipli che vengono triggerati allo spostamento di una foto
 PROVA A VEDERE QUESTO LINK
 https://stackoverflow.com/questions/60574898/nodejs-events-triggering-multiple-times-in-electron-react-app
 
