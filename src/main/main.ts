@@ -34,7 +34,7 @@ ipcMain.on('ipc-example', async (event, arg) => {
 });
 
 ipcMain.on('get-files', (event, arg) => {
-  const folder = '/Users/geppe/Desktop/Foto/Altro';
+  const folder = '/Users/geppe/Desktop/provafoto/fotovecchie';
   const result: string[] = [];
   const files = fs.readdirSync(folder);
 
@@ -52,7 +52,7 @@ ipcMain.on('move-photo', (event, arg) => {
     return;
   }
 
-  const filePath = arg[0].replace('file://', '');
+  const filePath = arg[0].replace('file://', '').replaceAll('%20', ' ');
   const fileName = path.basename(filePath);
   const newFolder = arg[1];
   const newPath = `${newFolder}/${fileName}`.replace('file://', '');
@@ -60,7 +60,7 @@ ipcMain.on('move-photo', (event, arg) => {
     if (err) throw err;
   });
 
-  mainWindow?.webContents.send('move-photo', arg[0]);
+  mainWindow?.webContents.send('move-photo', arg[0].replaceAll('%20', ' '));
 });
 
 if (process.env.NODE_ENV === 'production') {
