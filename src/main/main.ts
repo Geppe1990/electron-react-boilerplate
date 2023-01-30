@@ -34,7 +34,7 @@ ipcMain.on('ipc-example', async (event, arg) => {
 });
 
 ipcMain.on('get-files', (event) => {
-  const folder = '/Users/geppe/Desktop/provafoto/fotovecchie';
+  const folder = '/Users/geppe/Desktop/Foto/20192018';
   const result: string[] = [];
   const files = fs.readdirSync(folder);
 

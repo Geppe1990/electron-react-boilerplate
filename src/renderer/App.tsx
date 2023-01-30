@@ -42,14 +42,14 @@ const Index = () => {
   const basePath = 'file:///Users/geppe/Desktop';
 
   const buttons = [
-    { name: '👰‍♀️ Giulia', folder: `${basePath}/provafoto/fotonuove` },
-    { name: '👯 Amici', folder: `${basePath}/provafoto/fotonuove` },
-    { name: '👨‍👩‍👦‍👦 Famiglia', folder: `${basePath}/provafoto/fotonuove` },
-    { name: '👨‍👩‍👦‍👦 Altro', folder: `${basePath}/provafoto/fotonuove` },
-    { name: '🧑‍💻 Io', folder: `${basePath}/provafoto/fotonuove` },
-    { name: '🐾 Animali', folder: `${basePath}/provafoto/fotonuove` },
-    { name: '🏖️ Vacanze', folder: `${basePath}/provafoto/fotonuove` },
-    { name: '🗂️ ToFolder', folder: `${basePath}/provafoto/fotonuove` },
+    { name: '👰‍♀️ Giulia', folder: `${basePath}/nuovefoto/giulia` },
+    { name: '👯 Amici', folder: `${basePath}/nuovefoto/amici` },
+    { name: '👨‍👩‍👦‍👦 Famiglia', folder: `${basePath}/nuovefoto/famiglia` },
+    { name: '👨‍👩‍👦‍👦 Altro', folder: `${basePath}/nuovefoto/altro` },
+    { name: '🧑‍💻 Io', folder: `${basePath}/nuovefoto/io` },
+    { name: '🐾 Animali', folder: `${basePath}/nuovefoto/animali` },
+    { name: '🏖️ Vacanze', folder: `${basePath}/nuovefoto/vacanze` },
+    { name: '🗂️ ToFolder', folder: `${basePath}/nuovefoto/fotodaspostare` },
   ];
 
   return (
