@@ -17,6 +17,17 @@ const Index = () => {
   const photos = useSelector((state: State) => state.photos);
   const dispatch = useDispatch();
   const { loadPhotos } = bindActionCreators(actionCreators, dispatch);
+  const basePath = 'file:///Users/geppe/Desktop/nuovefoto';
+  const buttons = [
+    { name: '👰‍♀️ Giulia', folder: `${basePath}/giulia` },
+    { name: '👯 Amici', folder: `${basePath}/amici` },
+    { name: '👨‍👩‍👦‍👦 Famiglia', folder: `${basePath}/famiglia` },
+    { name: '👨‍👩‍👦‍👦 Altro', folder: `${basePath}/altro` },
+    { name: '🧑‍💻 Io', folder: `${basePath}/io` },
+    { name: '🐾 Animali', folder: `${basePath}/animali` },
+    { name: '🏖️ Vacanze', folder: `${basePath}/vacanze` },
+    { name: '🗂️ ToFolder', folder: `${basePath}/fotodaspostare` },
+  ];
 
   const loadImages = () => {
     window.electron.ipcRenderer.once('get-files', (arg) => {
@@ -44,20 +55,6 @@ const Index = () => {
     </div>
   );
 
-  const basePath = 'file:///Users/geppe/Desktop';
-
-  const buttons = [
-    { name: '👰‍♀️ Giulia', folder: `${basePath}/nuovefoto/giulia` },
-    { name: '👯 Amici', folder: `${basePath}/nuovefoto/amici` },
-    { name: '👨‍👩‍👦‍👦 Famiglia', folder: `${basePath}/nuovefoto/famiglia` },
-    { name: '👨‍👩‍👦‍👦 Altro', folder: `${basePath}/nuovefoto/altro` },
-    { name: '🧑‍💻 Io', folder: `${basePath}/nuovefoto/io` },
-    { name: '🐾 Animali', folder: `${basePath}/nuovefoto/animali` },
-    { name: '🏖️ Vacanze', folder: `${basePath}/nuovefoto/vacanze` },
-    { name: '🗂️ ToFolder', folder: `${basePath}/nuovefoto/fotodaspostare` },
-    { name: '⭐️ Altro', folder: `${basePath}/nuovefoto/fotodaspostare` },
-  ];
-
   return (
     <div className="container-fluid">
       <h1>Photomanager</h1>
@@ -66,6 +63,7 @@ const Index = () => {
           <SliderWrapper />
           <div className="flex justify-center">
             <button
+              tabIndex={0}
               disabled={photos && photos.length > 0}
               onClick={() => loadImages()}
               type="button"
