@@ -1,6 +1,11 @@
 import { Dispatch } from 'redux';
 import { ActionType } from '../actionTypes';
-import { ActivePhotoAction, BankAction, PhotosAction } from '../actions';
+import {
+  ActivePhotoAction,
+  BankAction,
+  PhotosAction,
+  SettingsAction,
+} from '../actions';
 
 export const depositMoney = (amount: number) => {
   return (dispatch: Dispatch<BankAction>) => {
@@ -51,6 +56,15 @@ export const setActivePhoto = (activePhoto: string | undefined) => {
     dispatch({
       type: ActionType.ACTIVEPHOTO,
       payload: activePhoto,
+    });
+  };
+};
+
+export const setOpenSettings = (openSettings: boolean) => {
+  return (dispatch: Dispatch<SettingsAction>) => {
+    dispatch({
+      type: ActionType.SETTINGSOPENED,
+      payload: openSettings,
     });
   };
 };
