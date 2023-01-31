@@ -2,13 +2,20 @@ import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bulma/css/bulma.min.css';
 import './App.css';
 import Main from './components/Main/Main';
+import Header from './components/Header/Header';
 
 const Index = () => {
   return (
-    <div className="container-fluid">
-      <h1 className="title has-text-white">Photomanager</h1>
-      <Main />
-    </div>
+    <>
+      <Header />
+      <div className="is-flex is-flex-direction-column is-justify-content-center is-fullheight">
+        <div className="section">
+          <div className="container-fluid">
+            <Main />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
