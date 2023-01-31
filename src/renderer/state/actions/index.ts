@@ -29,12 +29,12 @@ interface IActivePhotoAction {
   payload: string | undefined;
 }
 
-interface ISettingsOpenedAction {
-  type: ActionType.SETTINGSOPENED;
+interface ISettingsModalOpenedAction {
+  type: ActionType.SETTINGSMODALOPENED;
   payload: boolean;
 }
 
 export type BankAction = IDepositAction | IWithDrawAction | IBankruptAction;
 export type PhotosAction = ILoadPhotosAction | IRemovePhotoAction;
 export type ActivePhotoAction = IActivePhotoAction;
-export type SettingsAction = ISettingsOpenedAction;
+export type SettingsModalAction = ISettingsModalOpenedAction;

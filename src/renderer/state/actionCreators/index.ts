@@ -4,7 +4,7 @@ import {
   ActivePhotoAction,
   BankAction,
   PhotosAction,
-  SettingsAction,
+  SettingsModalAction,
 } from '../actions';
 
 export const depositMoney = (amount: number) => {
@@ -60,10 +60,10 @@ export const setActivePhoto = (activePhoto: string | undefined) => {
   };
 };
 
-export const setOpenSettings = (openSettings: boolean) => {
-  return (dispatch: Dispatch<SettingsAction>) => {
+export const setSettingsModalOpened = (openSettings: boolean) => {
+  return (dispatch: Dispatch<SettingsModalAction>) => {
     dispatch({
-      type: ActionType.SETTINGSOPENED,
+      type: ActionType.SETTINGSMODALOPENED,
       payload: openSettings,
     });
   };

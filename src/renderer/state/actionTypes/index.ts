@@ -5,5 +5,5 @@ export enum ActionType {
   LOADPHOTOS = 'loadphotos',
   REMOVEPHOTO = 'removephoto',
   ACTIVEPHOTO = 'activephoto',
-  SETTINGSOPENED = 'settingsopened',
+  SETTINGSMODALOPENED = 'settingsmodalopened',
 }

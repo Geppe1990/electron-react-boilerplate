@@ -1,9 +1,6 @@
-import React from 'react';
 import { bindActionCreators } from 'redux';
 import { actionCreators, State } from 'renderer/state';
 import { useDispatch, useSelector } from 'react-redux';
-import { movePhoto, loadImages } from 'renderer/api/api';
-import SliderWrapper from '../SliderWrapper/SliderWrapper';
 
 const Settings = () => {
   const settings = useSelector((state: State) => state.settings);
