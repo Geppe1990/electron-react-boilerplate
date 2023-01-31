@@ -34,7 +34,7 @@ ipcMain.on('ipc-example', async (event, arg) => {
 });
 
 ipcMain.on('get-files', (event) => {
-  const folder = '/Users/geppe/Desktop/Foto/20192018';
+  const folder = '/Users/geppe/Desktop/Foto/2020';
   const result: string[] = [];
   const files = fs.readdirSync(folder);
 
@@ -104,6 +104,8 @@ const createWindow = async () => {
     show: false,
     width: 1024,
     height: 728,
+    minWidth: 1024,
+    minHeight: 728,
     icon: getAssetPath('icon.png'),
     webPreferences: {
       webSecurity: false,
