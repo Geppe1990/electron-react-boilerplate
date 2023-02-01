@@ -6,6 +6,7 @@ import {
   PhotosAction,
   SettingsModalAction,
   FolderAction,
+  ActiveFolderAction,
 } from '../actions';
 
 export const depositMoney = (amount: number) => {
@@ -101,6 +102,15 @@ export const addFolder = (item: {
     dispatch({
       type: ActionType.ADDFOLDER,
       payload: item,
+    });
+  };
+};
+
+export const editActiveFolder = (folder: string) => {
+  return (dispatch: Dispatch<ActiveFolderAction>) => {
+    dispatch({
+      type: ActionType.EDITACTIVEFOLDER,
+      payload: folder,
     });
   };
 };

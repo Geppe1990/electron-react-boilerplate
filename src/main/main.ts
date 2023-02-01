@@ -62,6 +62,14 @@ ipcMain.on('move-photo', (event, arg) => {
   mainWindow?.webContents.send('move-photo', arg[0].replaceAll('%20', ' '));
 });
 
+ipcMain.on('testt', (event, arg) => {
+  if (!arg) {
+    return;
+  }
+
+  console.log(arg);
+});
+
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
   sourceMapSupport.install();

@@ -1,20 +1,21 @@
 import { bindActionCreators } from 'redux';
 import { actionCreators, State } from 'renderer/state';
 import { useDispatch, useSelector } from 'react-redux';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import SettingsForm from './SettingsForm';
+import ActiveFolderForm from './ActiveFolderForm';
 
 const Settings = () => {
   const modalSettings = useSelector((state: State) => state.modalSettings);
   const folders = useSelector((state: State) => state.folders.data);
+  const activeFolder = useSelector((state: State) => state.activeFolder);
   const dispatch = useDispatch();
   const { setSettingsModalOpened, addFolder } = bindActionCreators(
     actionCreators,
     dispatch
   );
-
-  // const addFolder = () => {
-  //   console.log('Aggiungo Folder');
-  // };
 
   return (
     <div className={`modal ${modalSettings ? 'is-active' : ''}`}>
@@ -22,14 +23,19 @@ const Settings = () => {
       <div className="modal-card">
         <header className="modal-card-head">
           <p className="modal-card-title">Settings</p>
-          <button
-            type="button"
-            className="delete"
-            aria-label="close"
+          <FontAwesomeIcon
+            className="is-clickable"
+            icon={faClose}
             onClick={() => setSettingsModalOpened(false)}
           />
         </header>
         <section className="modal-card-body">
+          <h2 className="title is-2">Cartella Principale</h2>
+          {/* <div>{activeFolder}</div> */}
+          <div>
+            <ActiveFolderForm />
+          </div>
+          <h2 className="title is-2">Cartelle</h2>
           {folders.map((folder) => (
             <div key={folder.id} className={`mb-5 ${folder.id}`}>
               <SettingsForm item={folder} />
@@ -44,8 +50,8 @@ const Settings = () => {
             onClick={() =>
               addFolder({
                 id: folders.length + 1,
-                name: 'ciccio',
-                folder: 'ciccia',
+                name: '',
+                folder: '',
               })
             }
           >

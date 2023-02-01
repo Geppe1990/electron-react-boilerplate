@@ -55,6 +55,11 @@ interface IDeleteFolderAction {
   payload: number;
 }
 
+interface IEditActiveFolderAction {
+  type: ActionType.EDITACTIVEFOLDER;
+  payload: string;
+}
+
 export type BankAction = IDepositAction | IWithDrawAction | IBankruptAction;
 export type PhotosAction = ILoadPhotosAction | IRemovePhotoAction;
 export type ActivePhotoAction = IActivePhotoAction;
@@ -63,3 +68,4 @@ export type FolderAction =
   | IAddFolderAction
   | IEditFolderAction
   | IDeleteFolderAction;
+export type ActiveFolderAction = IEditActiveFolderAction;

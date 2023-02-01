@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from 'renderer/state';
 import { useDispatch } from 'react-redux';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type SettingsFormProps = {
   item: {
@@ -10,6 +12,22 @@ type SettingsFormProps = {
     folder: string;
     id: number;
   };
+};
+
+type TextInputProps = {
+  val: string;
+  callback: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const TextInput: React.FC<TextInputProps> = ({ val, callback }) => {
+  return (
+    <input
+      className="input"
+      type="text"
+      value={val}
+      onChange={(e) => callback(e.target.value)}
+    />
+  );
 };
 
 const SettingsForm: React.FC<SettingsFormProps> = ({ item }) => {
@@ -37,31 +55,32 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ item }) => {
     setSettingsModalOpened(false);
   };
 
+  // const getFolder = () => {
+  //   test();
+  // };
+
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <div className="field">
         <label className="label">Name</label>
         <div className="control">
-          <input
-            className="input"
-            type="text"
-            placeholder="Text input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <TextInput val={name} callback={setName} />
         </div>
       </div>
-      <div className="field">
-        <label className="label">Folder</label>
-        <div className="control">
-          <input
-            className="input"
-            type="text"
-            placeholder="Text input"
-            value={folder}
-            onChange={(e) => setFolder(e.target.value)}
-          />
+      <label className="label">Folder</label>
+      <div className="field has-addons">
+        <div className="control is-expanded">
+          <TextInput val={folder} callback={setFolder} />
         </div>
+        {/* <div className="control">
+          <button
+            type="button"
+            className="button is-info"
+            onClick={() => getFolder()}
+          >
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+        </div> */}
       </div>
       <div className="field is-grouped">
         <div className="control">

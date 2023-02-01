@@ -31,7 +31,6 @@ button {
   transition: all ease-in 0.1s;
   cursor: pointer;
   opacity: 0.9;
-  margin-right: 10px;
 }
 
 button:hover {

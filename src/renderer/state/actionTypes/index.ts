@@ -9,4 +9,5 @@ export enum ActionType {
   ADDFOLDER = 'addfolder',
   EDITFOLDER = 'editfolder',
   DELETEFOLDER = 'deletefolder',
+  EDITACTIVEFOLDER = 'editactivefolder',
 }

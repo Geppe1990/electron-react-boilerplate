@@ -4,6 +4,7 @@ import photosReducer from './photosReducer';
 import activePhotoReducer from './activePhotoReducer';
 import settingsModalReducer from './settingsModalReducer';
 import foldersReducer from './foldersReducer';
+import activeFolderReducer from './activeFolderReducer';
 
 const reducers = combineReducers({
   bank: bankReducer,
@@ -11,6 +12,7 @@ const reducers = combineReducers({
   activePhoto: activePhotoReducer,
   modalSettings: settingsModalReducer,
   folders: foldersReducer,
+  activeFolder: activeFolderReducer,
 });
 
 export default reducers;
