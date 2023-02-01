@@ -31,17 +31,7 @@ const Main = () => {
   const photos = useSelector((state: State) => state.photos);
   const dispatch = useDispatch();
   const { loadPhotos } = bindActionCreators(actionCreators, dispatch);
-  const basePath = 'file:///Users/geppe/Desktop/nuovefoto';
-  const buttons = [
-    { name: '👰‍♀️ Giulia', folder: `${basePath}/giulia` },
-    { name: '👯 Amici', folder: `${basePath}/amici` },
-    { name: '👨‍👩‍👦‍👦 Famiglia', folder: `${basePath}/famiglia` },
-    { name: '👨‍👩‍👦‍👦 Altro', folder: `${basePath}/altro` },
-    { name: '🧑‍💻 Io', folder: `${basePath}/io` },
-    { name: '🐾 Animali', folder: `${basePath}/animali` },
-    { name: '🏖️ Vacanze', folder: `${basePath}/vacanze` },
-    { name: '🗂️ ToFolder', folder: `${basePath}/fotodaspostare` },
-  ];
+  const folders = useSelector((state: State) => state.folders.data);
 
   return (
     <div className="columns">
@@ -58,7 +48,7 @@ const Main = () => {
         </div>
       </div>
       <aside className="column">
-        {buttons.map(({ name, folder }) => (
+        {folders.map(({ name, folder }) => (
           <FolderButton key={name} name={name} folder={folder} />
         ))}
       </aside>

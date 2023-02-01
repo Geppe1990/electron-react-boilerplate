@@ -7,13 +7,19 @@ import Settings from '../Settings/Settings';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { setOpenSettings } = bindActionCreators(actionCreators, dispatch);
+  const { setSettingsModalOpened } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   return (
     <header className="container-fluid is-flex is-justify-content-space-between is-align-items-center">
       <h1 className="title has-text-white has-text-left">Photomanager</h1>
       <span className="is-clickable">
-        <FontAwesomeIcon icon={faGear} onClick={() => setOpenSettings(true)} />
+        <FontAwesomeIcon
+          icon={faGear}
+          onClick={() => setSettingsModalOpened(true)}
+        />
       </span>
       <Settings />
     </header>

@@ -6,4 +6,7 @@ export enum ActionType {
   REMOVEPHOTO = 'removephoto',
   ACTIVEPHOTO = 'activephoto',
   SETTINGSMODALOPENED = 'settingsmodalopened',
+  ADDFOLDER = 'addfolder',
+  EDITFOLDER = 'editfolder',
+  DELETEFOLDER = 'deletefolder',
 }

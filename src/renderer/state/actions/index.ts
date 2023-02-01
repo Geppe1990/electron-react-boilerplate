@@ -34,7 +34,32 @@ interface ISettingsModalOpenedAction {
   payload: boolean;
 }
 
+interface IAddFolderAction {
+  type: ActionType.ADDFOLDER;
+  payload: {
+    id: number;
+    name: string;
+    folder: string;
+  };
+}
+interface IEditFolderAction {
+  type: ActionType.EDITFOLDER;
+  payload: {
+    id: number;
+    name: string;
+    folder: string;
+  };
+}
+interface IDeleteFolderAction {
+  type: ActionType.DELETEFOLDER;
+  payload: number;
+}
+
 export type BankAction = IDepositAction | IWithDrawAction | IBankruptAction;
 export type PhotosAction = ILoadPhotosAction | IRemovePhotoAction;
 export type ActivePhotoAction = IActivePhotoAction;
 export type SettingsModalAction = ISettingsModalOpenedAction;
+export type FolderAction =
+  | IAddFolderAction
+  | IEditFolderAction
+  | IDeleteFolderAction;

@@ -5,6 +5,7 @@ import {
   BankAction,
   PhotosAction,
   SettingsModalAction,
+  FolderAction,
 } from '../actions';
 
 export const depositMoney = (amount: number) => {
@@ -68,3 +69,27 @@ export const setSettingsModalOpened = (openSettings: boolean) => {
     });
   };
 };
+
+export const editFolder = (item: {
+  name: string;
+  folder: string;
+  id: number;
+}) => {
+  return (dispatch: Dispatch<FolderAction>) => {
+    dispatch({
+      type: ActionType.EDITFOLDER,
+      payload: item,
+    });
+  };
+};
+
+export const deleteFolder = (id: number) => {
+  return (dispatch: Dispatch<FolderAction>) => {
+    dispatch({
+      type: ActionType.DELETEFOLDER,
+      payload: id,
+    });
+  };
+};
+
+// export const addFolder = () => {}
