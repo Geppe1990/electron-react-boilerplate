@@ -48,8 +48,8 @@ const Main = () => {
         </div>
       </div>
       <aside className="column">
-        {folders.map(({ name, folder }) => (
-          <FolderButton key={name} name={name} folder={folder} />
+        {folders.map(({ name, folder, id }) => (
+          <FolderButton key={id} name={name} folder={folder} />
         ))}
       </aside>
     </div>

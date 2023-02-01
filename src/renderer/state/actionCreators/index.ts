@@ -92,4 +92,15 @@ export const deleteFolder = (id: number) => {
   };
 };
 
-// export const addFolder = () => {}
+export const addFolder = (item: {
+  name: string;
+  folder: string;
+  id: number;
+}) => {
+  return (dispatch: Dispatch<FolderAction>) => {
+    dispatch({
+      type: ActionType.ADDFOLDER,
+      payload: item,
+    });
+  };
+};

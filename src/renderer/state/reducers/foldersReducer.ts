@@ -66,6 +66,11 @@ const reducer = (state = initialState, action: FolderAction) => {
         ...state,
         data: state.data.filter((folder) => folder.id !== action.payload),
       };
+    case ActionType.ADDFOLDER:
+      return {
+        ...state,
+        data: [...state.data, action.payload],
+      };
     default:
       return state;
   }
