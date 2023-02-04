@@ -55,9 +55,9 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ item }) => {
     setSettingsModalOpened(false);
   };
 
-  // const getFolder = () => {
-  //   test();
-  // };
+  const getFolder = () => {
+    console.log('pippo');
+  };
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
@@ -72,7 +72,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ item }) => {
         <div className="control is-expanded">
           <TextInput val={folder} callback={setFolder} />
         </div>
-        {/* <div className="control">
+        <div className="control">
           <button
             type="button"
             className="button is-info"
@@ -80,7 +80,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ item }) => {
           >
             <FontAwesomeIcon icon={faSearch} />
           </button>
-        </div> */}
+        </div>
       </div>
       <div className="field is-grouped">
         <div className="control">
